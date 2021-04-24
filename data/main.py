@@ -3,6 +3,8 @@ from sklearn import svm
 import csv
 from sklearn.utils import Bunch
 import numpy as np
+# Import scikit-learn metrics module for accuracy calculation
+from sklearn import metrics
 
 def loadData(file,n_features):
     with open(file) as csv_file:
@@ -24,7 +26,7 @@ def loadData(file,n_features):
 
     return Bunch(data=data, target=target)
 
-def test(file,n_features,seed=35,kernel='linear',degree=3, gamma='scale',C=1):
+def test(file,n_features,seed=35,kernel='rbf',degree=3, gamma='scale',C=1):
 
     data = loadData(file,n_features)
 
@@ -36,13 +38,12 @@ def test(file,n_features,seed=35,kernel='linear',degree=3, gamma='scale',C=1):
     clf.fit(X_train, y_train)
     y_pred = clf.predict(X_test)
 
-    #Import scikit-learn metrics module for accuracy calculation
-    from sklearn import metrics
-
     # Model Accuracy: how often is the classifier correct?
 
     print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
-    def k_fold(data_size,k=10): # returns division of training data
+
+    # returns division of training data
+    def k_fold(data_size,k=10):
         remainder = data_size%k
         quotient = data_size//k
         indices =[]
@@ -56,7 +57,8 @@ def test(file,n_features,seed=35,kernel='linear',degree=3, gamma='scale',C=1):
             left = right + 1
         return indices
 
-    def split_data(data, indices, seed=0): # this splits the data k fold
+    # this splits the data k fold
+    def split_data(data, indices, seed=0):
         random.seed(seed)
         random.shuffle(data)
         split = [data[s:e+1] for s,e in indices]
