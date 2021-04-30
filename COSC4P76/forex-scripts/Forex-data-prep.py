@@ -9,7 +9,7 @@ test = []
 dates =[]
 for x in range(len(fn["time"])):
     line = "date , value \n date , value"
-    if fn["time"][x]-3682080>= 6311520-1440 and fn["time"][x] - 3682080 <=7364160: # minutes from jan 1 2019 to dec 31st 2020
+    if fn["time"][x]-3682080>= 6311520-1440 and fn["time"][x] - 3682080 <=7364160+2880: # minutes from jan 1 2019 to dec 31st 2020
         t = t+1
         # if (date+datetime.timedelta(days = (fn["time"][x]-3682080)/1440)).year==2019:
         # print(date+datetime.timedelta(days = (fn["time"][x]-3682080)/1440))
@@ -39,7 +39,11 @@ actualEMA = EMA[1:]
 diffEMA=[0]
 for x in range(1,len(actualEMA)):
     diffEMA.append(actualEMA[x]-actualEMA[x-1])
-    diff.append(values[x]-values[x-1])
+for x in range(1,len(actualEMA)):
+    try:
+        diff.append(values[x+1]-values[x])
+    except:
+        continue
 # print(values)
 # print(diffEMA)
 # print(diff)
@@ -52,17 +56,19 @@ for x in diff:
     else:
         statement.append("?")
 
-statement = statement[1:]
-diffEMA = diffEMA[1:]
-print(len(statement))
+statement = statement[1:len(statement)]
+diffEMA = diffEMA[1:len(diffEMA)-1]
+# print(len(statement))
 # diffEMA = [actualEMA[x]-actualEMA[x-1] for x in range(1,len(actualEMA))]
-print(diffEMA)
+# print(diffEMA)
 line = ""
 ndate = datetime.datetime(2019,1,1,0,0,0)
 for x in range(len(diffEMA)):
     line = line+str(date+datetime.timedelta(days=dates[x]))+","+str(diffEMA[x])+"\n"
 # realdiffEMA = [0]
-print(line)
+# print(values)
+# print(line)
+print(statement)
 # for x in diffEMA:
 #     realdiffEMA.append(x)
 # print(realdiffEMA)
