@@ -1,0 +1,13 @@
+complete.csv&724.0773439350247&1.189207115002721&sigmoid&51.80\\
+ \hlinecomplete2019.csv&1722.1558584396073&0.5&rbf&51.61\\
+ \hlinecomplete2020.csv&215.2694823049509&3.363585661014858&sigmoid&51.75\\
+ \hlineNoTrudeau.csv&2048.0&0.42044820762685725&rbf&51.17\\
+ \hlineNoTrudeau2019.csv&1024.0&2.0&rbf&51.86\\
+ \hlineNoTrudeau2020.csv&128.0&6.727171322029716&sigmoid&51.65\\
+ \hlineNoTrump.csv&362.03867196751236&1.4142135623730951&rbf&51.39\\
+ \hlineNoTrump2019.csv&22.627416997969522&4.0&rbf&51.78\\
+ \hlineNoTrump2020.csv&0.0078125&7.62939453125e-06&linear&50.65\\
+ \hlineonlyMoving.csv&0.0078125&7.62939453125e-06&rbf&51.04\\
+ \hlineonlyMoving2019.csv&0.0078125&7.62939453125e-06&rbf&51.75\\
+ \hlineonlyMoving2020.csv&0.0078125&7.62939453125e-06&rbf&50.65\\
+ \hline
